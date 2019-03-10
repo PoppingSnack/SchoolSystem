@@ -1,15 +1,14 @@
-//123
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.sql.*;
-//Ö÷º¯Êı¡¢Ö÷ÒªÀà
+//ä¸»å‡½æ•°ã€ä¸»è¦ç±»
 public class JCTX {
 	public static void main(String[] args) {
 		new Frm_Main();
 	}
 }
-// ÊµÏÖÀà
+// å®ç°ç±»
 class Frm_Main implements ActionListener 
 {
 	public JFrame frame;
@@ -23,8 +22,8 @@ class Frm_Main implements ActionListener
 	public JMenuItem subMenu3[] = new JMenuItem[2];
 	JButton toolBarButton[] = new JButton[8];
 	public JToolBar toolBar;
-	String strTip[] = { "²éÑ¯ÄúÒªÕÒµÄÑ§Éú¼ÇÂ¼...", "Ìí¼ÓÑ§Éú¼ÇÂ¼...", "É¾³ıÒÑÓĞµÄÑ§Éú¼ÇÂ¼", "ĞŞ¸ÄÑ§Éú¼ÇÂ¼...",
-			"Ê¹ÄúĞŞ¸ÄµÄÑ§Éú¼ÇÂ¼ÉúĞ§...", "Ê¹     ÄúÌí¼ÓµÄÑ§Éú¼ÇÂ¼ÉúĞ§...", "È·ÈÏÉ¾³ıµ±Ç°¼ÇÂ¼...", "ÍË³ö±¾ÏµÍ³:)" };
+	String strTip[] = { "æŸ¥è¯¢æ‚¨è¦æ‰¾çš„å­¦ç”Ÿè®°å½•...", "æ·»åŠ å­¦ç”Ÿè®°å½•...", "åˆ é™¤å·²æœ‰çš„å­¦ç”Ÿè®°å½•", "ä¿®æ”¹å­¦ç”Ÿè®°å½•...",
+			"ä½¿æ‚¨ä¿®æ”¹çš„å­¦ç”Ÿè®°å½•ç”Ÿæ•ˆ...", "ä½¿     æ‚¨æ·»åŠ çš„å­¦ç”Ÿè®°å½•ç”Ÿæ•ˆ...", "ç¡®è®¤åˆ é™¤å½“å‰è®°å½•...", "é€€å‡ºæœ¬ç³»ç»Ÿ:)" };
 	String id = new String();
 	String name = new String();
 	String sex = new String();
@@ -35,18 +34,18 @@ class Frm_Main implements ActionListener
 	ResultSet rs;
 	Statement st;
 	PreparedStatement pst;
-	public JLabel idL = new JLabel("Ñ§ºÅ£º");
-	public JLabel nameL = new JLabel("ĞÕÃû£º");
-	public JLabel sexL = new JLabel("ĞÔ±ğ£º");
-	public JLabel jlbirth = new JLabel("³öÉúÄêÔÂ£º");
-	public JLabel jladdr = new JLabel("¼®¹á£º");
+	public JLabel idL = new JLabel("å­¦å·ï¼š");
+	public JLabel nameL = new JLabel("å§“åï¼š");
+	public JLabel sexL = new JLabel("æ€§åˆ«ï¼š");
+	public JLabel jlbirth = new JLabel("å‡ºç”Ÿå¹´æœˆï¼š");
+	public JLabel jladdr = new JLabel("ç±è´¯ï¼š");
 	public JTextField idT = new JTextField();
 	public JTextField nameT = new JTextField();
 	public JTextField sexT = new JTextField();
 	public JTextField jtbirth = new JTextField();
 	public JTextField jtaddr = new JTextField();
 	public Frm_Main() {
-		frame = new JFrame("Ñ§ÉúĞÅÏ¢¹ÜÀíÏµÍ³");
+		frame = new JFrame("å­¦ç”Ÿä¿¡æ¯ç®¡ç†ç³»ç»Ÿ");
 		c = frame.getContentPane();
 		c.setLayout(null);
 		menuBar = new JMenuBar();
@@ -54,8 +53,8 @@ class Frm_Main implements ActionListener
 		toolBar.setFloatable(false);
 		frame.setJMenuBar(menuBar);
 		frame.setResizable(false);
-		mainMenu1 = new JMenu("¹ÜÀí");
-		String str1[] = { "Ìí¼ÓÓÃ»§", "É¾³ıÓÃ»§", "²éÑ¯ÓÃ»§", " ", "ÍË³ö" };
+		mainMenu1 = new JMenu("ç®¡ç†");
+		String str1[] = { "æ·»åŠ ç”¨æˆ·", "åˆ é™¤ç”¨æˆ·", "æŸ¥è¯¢ç”¨æˆ·", " ", "é€€å‡º" };
 		for (int i = 0; i < 5; i++) {
 			if (i == 3)
 				mainMenu1.addSeparator();
@@ -66,24 +65,24 @@ class Frm_Main implements ActionListener
 			}
 		}
 		menuBar.add(mainMenu1);
-		mainMenu2 = new JMenu("Î¬»¤Ñ§ÉúĞÅÏ¢");
-		String str2[] = { "²éÑ¯¼ÇÂ¼", "Ìí¼Ó¼ÇÂ¼", "É¾³ı¼ÇÂ¼", "ĞŞ¸Ä¼ÇÂ¼", "Ìá½»ĞŞ¸Ä", "Ìá½»Ìí¼Ó",
-				"È·ÈÏÉ¾³ı" };
+		mainMenu2 = new JMenu("ç»´æŠ¤å­¦ç”Ÿä¿¡æ¯");
+		String str2[] = { "æŸ¥è¯¢è®°å½•", "æ·»åŠ è®°å½•", "åˆ é™¤è®°å½•", "ä¿®æ”¹è®°å½•", "æäº¤ä¿®æ”¹", "æäº¤æ·»åŠ ",
+				"ç¡®è®¤åˆ é™¤" };
 		for (int i = 0; i < 7; i++) {
 			subMenu2[i] = new JMenuItem(str2[i]);
 			subMenu2[i].addActionListener(this);
 			mainMenu2.add(subMenu2[i]);
 		}
 		menuBar.add(mainMenu2);
-		mainMenu3 = new JMenu("°ïÖú");
-		String str3[] = { "°ïÖú...", "¹ØÓÚ..." };
+		mainMenu3 = new JMenu("å¸®åŠ©");
+		String str3[] = { "å¸®åŠ©...", "å…³äº..." };
 		for (int i = 0; i < 2; i++) {
 			subMenu3[i] = new JMenuItem(str3[i]);
 			subMenu3[i].addActionListener(this);
 			mainMenu3.add(subMenu3[i]);
 		}
 		menuBar.add(mainMenu3);
-		String strToolBar[] = { "²éÑ¯", "Ìí¼Ó", "É¾³ı", "ĞŞ¸Ä", "Ìá½»ĞŞ¸Ä", "Ìá½»Ìí¼Ó", "È·ÈÏÉ¾³ı" };
+		String strToolBar[] = { "æŸ¥è¯¢", "æ·»åŠ ", "åˆ é™¤", "ä¿®æ”¹", "æäº¤ä¿®æ”¹", "æäº¤æ·»åŠ ", "ç¡®è®¤åˆ é™¤" };
 		for (int i = 0; i < 7; i++) {
 			toolBarButton[i] = new JButton(strToolBar[i]);
 			toolBarButton[i].setToolTipText(strTip[i]);
@@ -124,7 +123,7 @@ class Frm_Main implements ActionListener
 		jtaddr.setSize(200, 20);
 		c.add(jtaddr);
 		JLabel information = new JLabel("");
-		information.setFont(new Font("ËÎÌå", Font.BOLD, 35));
+		information.setFont(new Font("å®‹ä½“", Font.BOLD, 35));
 		information.setSize(380, 110);
 		information.setLocation(10, 210);
 		c.add(information);
@@ -134,8 +133,8 @@ class Frm_Main implements ActionListener
 		frame.setVisible(true);
 		conDB();
 	}
-	// ÒÔÉÏÊÇÉèÖÃÊı¾İ¿âÃæ°æ¡¢¿ò¼Ü
-	// ÒÔÏÂÊÇÁ¬½ÓÊı¾İ¿â
+	// ä»¥ä¸Šæ˜¯è®¾ç½®æ•°æ®åº“é¢ç‰ˆã€æ¡†æ¶
+	// ä»¥ä¸‹æ˜¯è¿æ¥æ•°æ®åº“
 	public Connection conDB() {
 		Connection  con = null;
 		try {
@@ -145,20 +144,20 @@ class Frm_Main implements ActionListener
 		try {
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/textjava", "root", "gyfwaysys");
 		} catch (SQLException e) {
-			JOptionPane.showMessageDialog(null, "Êı¾İ¿âÁ¬½ÓÊ§°Ü");
+			JOptionPane.showMessageDialog(null, "æ•°æ®åº“è¿æ¥å¤±è´¥");
 		}
 		return con;
 	}
-	// ÒÔÏÂÊÇ¹Ø±ÕÊı¾İ¿â
+	// ä»¥ä¸‹æ˜¯å…³é—­æ•°æ®åº“
 	public void closeDB() {
 		try {
 			pst.close();
 			conn.close();
 		} catch (SQLException e) {
-			JOptionPane.showMessageDialog(null, "Êı¾İ¿â¹Ø±ÕÊ§°Ü£¡");
+			JOptionPane.showMessageDialog(null, "æ•°æ®åº“å…³é—­å¤±è´¥ï¼");
 		}
 	}
-	// ÒÔÏÂÊÇÕë¶ÔÊı¾İ¿âµÄ¸÷ÖÖ²Ù×÷
+	// ä»¥ä¸‹æ˜¯é’ˆå¯¹æ•°æ®åº“çš„å„ç§æ“ä½œ
 	public void actionPerformed(ActionEvent e) {
 		conn=conDB();
 		if (e.getSource() == subMenu3[1] || e.getSource() == toolBarButton[7])
@@ -166,9 +165,9 @@ class Frm_Main implements ActionListener
 		if (e.getSource() == subMenu1[0] || e.getSource() == subMenu1[1]
 				|| e.getSource() == subMenu1[2])
 			JOptionPane.showMessageDialog(null, "");
-		// ²éÕÒ¹¦ÄÜµÄÊµÏÖ
+		// æŸ¥æ‰¾åŠŸèƒ½çš„å®ç°
 		if (e.getSource() == subMenu2[0] || e.getSource() == toolBarButton[0]) {
-			String idid = JOptionPane.showInputDialog("ÇëÊäÈëÒª²éÕÒµÄÑ§ÉúÑ§ºÅ");
+			String idid = JOptionPane.showInputDialog("è¯·è¾“å…¥è¦æŸ¥æ‰¾çš„å­¦ç”Ÿå­¦å·");
 			if (idid.trim() != "") {
 				String strSQL = "select * from student where id =?" ;	
 				try {
@@ -185,7 +184,7 @@ class Frm_Main implements ActionListener
 						count++;
 					}
 					if (count == 0)
-						JOptionPane.showMessageDialog(null, "¶Ô²»Æğ£¬Ã»ÓĞÄúÒª²éÕÒµÄÑ§Éú£¡");
+						JOptionPane.showMessageDialog(null, "å¯¹ä¸èµ·ï¼Œæ²¡æœ‰æ‚¨è¦æŸ¥æ‰¾çš„å­¦ç”Ÿï¼");
 					else {
 						idT.setText(id);
 						nameT.setText(name);
@@ -194,7 +193,7 @@ class Frm_Main implements ActionListener
 						jtbirth.setText(birth);
 					}
 				} catch (Exception ex) {
-					JOptionPane.showMessageDialog(null, "±§Ç¸£¬³ÌĞò³öÏÖÒì³££¡");
+					JOptionPane.showMessageDialog(null, "æŠ±æ­‰ï¼Œç¨‹åºå‡ºç°å¼‚å¸¸ï¼");
 				}
 			}
 		}
@@ -203,7 +202,7 @@ class Frm_Main implements ActionListener
 			System.exit(0);
 		}
 		if (e.getSource() == subMenu2[1] || e.getSource() == toolBarButton[1]) {
-			JOptionPane.showMessageDialog(null, "ÇëÊäÈëÒªÌí¼ÓµÄÑ§ÉúĞÅÏ¢");
+			JOptionPane.showMessageDialog(null, "è¯·è¾“å…¥è¦æ·»åŠ çš„å­¦ç”Ÿä¿¡æ¯");
 			idT.setEnabled(true);
 			idT.setText("");
 			nameT.setText("");
@@ -217,7 +216,7 @@ class Frm_Main implements ActionListener
 					|| (sexT.getText().trim()).equals("")
 					|| (jtaddr.getText().trim()).equals("")
 					|| (jtbirth.getText().trim()).equals(""))
-				JOptionPane.showMessageDialog(null, "ÇëÊäÈëĞÅÏ¢ÔÙµã»÷Ìá½»Ìí¼Ó£¡");
+				JOptionPane.showMessageDialog(null, "è¯·è¾“å…¥ä¿¡æ¯å†ç‚¹å‡»æäº¤æ·»åŠ ï¼");
 			else {
 				id = idT.getText();
 				name = nameT.getText();
@@ -235,10 +234,10 @@ class Frm_Main implements ActionListener
 					pst.executeUpdate();
 				} catch (SQLException e1) {
 					e1.printStackTrace();
-					JOptionPane.showMessageDialog(null, "Êı¾İ¿âÖĞÒÑ¾­´æÔÚÄúÒªÌí¼ÓµÄÑ§ÉúµÄÑ§ºÅ£¡");
+					JOptionPane.showMessageDialog(null, "æ•°æ®åº“ä¸­å·²ç»å­˜åœ¨æ‚¨è¦æ·»åŠ çš„å­¦ç”Ÿçš„å­¦å·ï¼");
 					return;
 				}
-				JOptionPane.showMessageDialog(null, "¹§Ï²Äú£¬Ìí¼Ó³É¹¦ÁË£¡");
+				JOptionPane.showMessageDialog(null, "æ­å–œæ‚¨ï¼Œæ·»åŠ æˆåŠŸäº†ï¼");
 			}
 		}
 		if (e.getSource() == subMenu2[4] || e.getSource() == toolBarButton[4]) {
@@ -247,7 +246,7 @@ class Frm_Main implements ActionListener
 					|| (sexT.getText().trim()).equals("")
 					|| (jtaddr.getText().trim()).equals("")
 					|| (jtbirth.getText().trim()).equals("")) {
-				JOptionPane.showMessageDialog(null, "ÇëÊäÈëĞÅÏ¢ÔÙµã»÷ĞŞ¸Ä£¡");
+				JOptionPane.showMessageDialog(null, "è¯·è¾“å…¥ä¿¡æ¯å†ç‚¹å‡»ä¿®æ”¹ï¼");
 				return;
 			} else {
 				id = idT.getText();
@@ -265,14 +264,14 @@ class Frm_Main implements ActionListener
 					pst.setString(5, id);
 					pst.executeUpdate();
 				} catch (SQLException e1) {
-					JOptionPane.showMessageDialog(null, "Êı¾İ¿âÖĞÒÑ¾­´æÔÚÄúÒªĞŞ¸ÄµÄÑ§Éú¼ÇÂ¼£¡");
+					JOptionPane.showMessageDialog(null, "æ•°æ®åº“ä¸­å·²ç»å­˜åœ¨æ‚¨è¦ä¿®æ”¹çš„å­¦ç”Ÿè®°å½•ï¼");
 					return;
 				}			
-				JOptionPane.showMessageDialog(null, "¹§Ï²Äú£¬ĞŞ¸Ä³É¹¦ÁË£¡");
+				JOptionPane.showMessageDialog(null, "æ­å–œæ‚¨ï¼Œä¿®æ”¹æˆåŠŸäº†ï¼");
 			}
 		}
 		if (e.getSource() == subMenu2[3] || e.getSource() == toolBarButton[3]) {
-			String idid = JOptionPane.showInputDialog("ÇëÊäÈëÒªĞŞ¸ÄµÄÑ§ÉúÑ§ºÅ");
+			String idid = JOptionPane.showInputDialog("è¯·è¾“å…¥è¦ä¿®æ”¹çš„å­¦ç”Ÿå­¦å·");
 			if (idid.trim() != "") {
 				String strSQL = "select * from student where id =?" ;
 				try {
@@ -289,7 +288,7 @@ class Frm_Main implements ActionListener
 						count++;
 					}
 					if (count == 0)
-						JOptionPane.showMessageDialog(null, "¶Ô²»Æğ£¬Ã»ÓĞÄúÒªĞŞ¸ÄµÄÑ§ÉúĞÅÏ¢£¡");
+						JOptionPane.showMessageDialog(null, "å¯¹ä¸èµ·ï¼Œæ²¡æœ‰æ‚¨è¦ä¿®æ”¹çš„å­¦ç”Ÿä¿¡æ¯ï¼");
 					else {
 						idT.setText(id);
 						nameT.setText(name);
@@ -299,12 +298,12 @@ class Frm_Main implements ActionListener
 						idT.setEnabled(false);
 					}
 				} catch (Exception ex) {
-					JOptionPane.showMessageDialog(null, "±§Ç¸£¬³ÌĞò³öÏÖÒì³££¡");
+					JOptionPane.showMessageDialog(null, "æŠ±æ­‰ï¼Œç¨‹åºå‡ºç°å¼‚å¸¸ï¼");
 				}
 			}
 		}
 		if (e.getSource() == subMenu2[2] || e.getSource() == toolBarButton[2]) {
-			String idDel = JOptionPane.showInputDialog("ÇëÊäÈëÒªÉ¾³ıµÄÑ§ÉúÑ§ºÅ");
+			String idDel = JOptionPane.showInputDialog("è¯·è¾“å…¥è¦åˆ é™¤çš„å­¦ç”Ÿå­¦å·");
 			if (idDel.trim() != "") {
 				String strSQL = "select * from student where id =?";
 				try {
@@ -321,7 +320,7 @@ class Frm_Main implements ActionListener
 						++count;
 					}
 					if (count == 0)
-						JOptionPane.showMessageDialog(null, "¶Ô²»Æğ£¬Ã»ÓĞÄúÒªÉ¾³ıµÄÑ§ÉúĞÅÏ¢£¡");
+						JOptionPane.showMessageDialog(null, "å¯¹ä¸èµ·ï¼Œæ²¡æœ‰æ‚¨è¦åˆ é™¤çš„å­¦ç”Ÿä¿¡æ¯ï¼");
 					else {
 						idT.setText(id);
 						nameT.setText(name);
@@ -331,7 +330,7 @@ class Frm_Main implements ActionListener
 						idT.setEnabled(false);
 					}
 				} catch (Exception ex) {
-					JOptionPane.showMessageDialog(null, "±§Ç¸£¬³ÌĞò³öÏÖÒì³££¡");
+					JOptionPane.showMessageDialog(null, "æŠ±æ­‰ï¼Œç¨‹åºå‡ºç°å¼‚å¸¸ï¼");
 				}
 			}
 		}
@@ -341,7 +340,7 @@ class Frm_Main implements ActionListener
 					|| (sexT.getText().trim()).equals("")
 					|| (jtaddr.getText().trim()).equals("")
 					|| (jtbirth.getText().trim()).equals("")) {
-				JOptionPane.showMessageDialog(null, "Çëµã»÷É¾³ı¼ÇÂ¼°´Å¥£¡");
+				JOptionPane.showMessageDialog(null, "è¯·ç‚¹å‡»åˆ é™¤è®°å½•æŒ‰é’®ï¼");
 				return;
 			} else {
 				id = idT.getText();
@@ -351,10 +350,10 @@ class Frm_Main implements ActionListener
 					pst.setString(1, id);
 					pst.executeUpdate();
 				} catch (Exception exx) {
-					JOptionPane.showMessageDialog(null, "³ö´íÁË£¡");
+					JOptionPane.showMessageDialog(null, "å‡ºé”™äº†ï¼");
 					return;
 				}
-				JOptionPane.showMessageDialog(null, "É¾³ı³É¹¦£¡");
+				JOptionPane.showMessageDialog(null, "åˆ é™¤æˆåŠŸï¼");
 			}
 		}
 	}

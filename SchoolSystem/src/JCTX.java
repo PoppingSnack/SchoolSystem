@@ -1,14 +1,15 @@
+//ssss
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.sql.*;
-//主函数、主要类
+//涓诲嚱鏁般�佷富瑕佺被
 public class JCTX {
 	public static void main(String[] args) {
 		new Frm_Main();
 	}
 }
-// 实现类
+// 瀹炵幇绫�
 class Frm_Main implements ActionListener 
 {
 	public JFrame frame;
@@ -22,8 +23,8 @@ class Frm_Main implements ActionListener
 	public JMenuItem subMenu3[] = new JMenuItem[2];
 	JButton toolBarButton[] = new JButton[8];
 	public JToolBar toolBar;
-	String strTip[] = { "查询您要找的学生记录...", "添加学生记录...", "删除已有的学生记录", "修改学生记录...",
-			"使您修改的学生记录生效...", "使     您添加的学生记录生效...", "确认删除当前记录...", "退出本系统:)" };
+	String strTip[] = { "鏌ヨ鎮ㄨ鎵剧殑瀛︾敓璁板綍...", "娣诲姞瀛︾敓璁板綍...", "鍒犻櫎宸叉湁鐨勫鐢熻褰�", "淇敼瀛︾敓璁板綍...",
+			"浣挎偍淇敼鐨勫鐢熻褰曠敓鏁�...", "浣�     鎮ㄦ坊鍔犵殑瀛︾敓璁板綍鐢熸晥...", "纭鍒犻櫎褰撳墠璁板綍...", "閫�鍑烘湰绯荤粺:)" };
 	String id = new String();
 	String name = new String();
 	String sex = new String();
@@ -34,18 +35,18 @@ class Frm_Main implements ActionListener
 	ResultSet rs;
 	Statement st;
 	PreparedStatement pst;
-	public JLabel idL = new JLabel("学号：");
-	public JLabel nameL = new JLabel("姓名：");
-	public JLabel sexL = new JLabel("性别：");
-	public JLabel jlbirth = new JLabel("出生年月：");
-	public JLabel jladdr = new JLabel("籍贯：");
+	public JLabel idL = new JLabel("瀛﹀彿锛�");
+	public JLabel nameL = new JLabel("濮撳悕锛�");
+	public JLabel sexL = new JLabel("鎬у埆锛�");
+	public JLabel jlbirth = new JLabel("鍑虹敓骞存湀锛�");
+	public JLabel jladdr = new JLabel("绫嶈疮锛�");
 	public JTextField idT = new JTextField();
 	public JTextField nameT = new JTextField();
 	public JTextField sexT = new JTextField();
 	public JTextField jtbirth = new JTextField();
 	public JTextField jtaddr = new JTextField();
 	public Frm_Main() {
-		frame = new JFrame("学生信息管理系统");
+		frame = new JFrame("瀛︾敓淇℃伅绠＄悊绯荤粺");
 		c = frame.getContentPane();
 		c.setLayout(null);
 		menuBar = new JMenuBar();
@@ -53,8 +54,8 @@ class Frm_Main implements ActionListener
 		toolBar.setFloatable(false);
 		frame.setJMenuBar(menuBar);
 		frame.setResizable(false);
-		mainMenu1 = new JMenu("管理");
-		String str1[] = { "添加用户", "删除用户", "查询用户", " ", "退出" };
+		mainMenu1 = new JMenu("绠＄悊");
+		String str1[] = { "娣诲姞鐢ㄦ埛", "鍒犻櫎鐢ㄦ埛", "鏌ヨ鐢ㄦ埛", " ", "閫�鍑�" };
 		for (int i = 0; i < 5; i++) {
 			if (i == 3)
 				mainMenu1.addSeparator();
@@ -65,24 +66,24 @@ class Frm_Main implements ActionListener
 			}
 		}
 		menuBar.add(mainMenu1);
-		mainMenu2 = new JMenu("维护学生信息");
-		String str2[] = { "查询记录", "添加记录", "删除记录", "修改记录", "提交修改", "提交添加",
-				"确认删除" };
+		mainMenu2 = new JMenu("缁存姢瀛︾敓淇℃伅");
+		String str2[] = { "鏌ヨ璁板綍", "娣诲姞璁板綍", "鍒犻櫎璁板綍", "淇敼璁板綍", "鎻愪氦淇敼", "鎻愪氦娣诲姞",
+				"纭鍒犻櫎" };
 		for (int i = 0; i < 7; i++) {
 			subMenu2[i] = new JMenuItem(str2[i]);
 			subMenu2[i].addActionListener(this);
 			mainMenu2.add(subMenu2[i]);
 		}
 		menuBar.add(mainMenu2);
-		mainMenu3 = new JMenu("帮助");
-		String str3[] = { "帮助...", "关于..." };
+		mainMenu3 = new JMenu("甯姪");
+		String str3[] = { "甯姪...", "鍏充簬..." };
 		for (int i = 0; i < 2; i++) {
 			subMenu3[i] = new JMenuItem(str3[i]);
 			subMenu3[i].addActionListener(this);
 			mainMenu3.add(subMenu3[i]);
 		}
 		menuBar.add(mainMenu3);
-		String strToolBar[] = { "查询", "添加", "删除", "修改", "提交修改", "提交添加", "确认删除" };
+		String strToolBar[] = { "鏌ヨ", "娣诲姞", "鍒犻櫎", "淇敼", "鎻愪氦淇敼", "鎻愪氦娣诲姞", "纭鍒犻櫎" };
 		for (int i = 0; i < 7; i++) {
 			toolBarButton[i] = new JButton(strToolBar[i]);
 			toolBarButton[i].setToolTipText(strTip[i]);
@@ -123,7 +124,7 @@ class Frm_Main implements ActionListener
 		jtaddr.setSize(200, 20);
 		c.add(jtaddr);
 		JLabel information = new JLabel("");
-		information.setFont(new Font("宋体", Font.BOLD, 35));
+		information.setFont(new Font("瀹嬩綋", Font.BOLD, 35));
 		information.setSize(380, 110);
 		information.setLocation(10, 210);
 		c.add(information);
@@ -133,8 +134,8 @@ class Frm_Main implements ActionListener
 		frame.setVisible(true);
 		conDB();
 	}
-	// 以上是设置数据库面版、框架
-	// 以下是连接数据库
+	// 浠ヤ笂鏄缃暟鎹簱闈㈢増銆佹鏋�
+	// 浠ヤ笅鏄繛鎺ユ暟鎹簱
 	public Connection conDB() {
 		Connection  con = null;
 		try {
@@ -144,20 +145,20 @@ class Frm_Main implements ActionListener
 		try {
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/textjava", "root", "gyfwaysys");
 		} catch (SQLException e) {
-			JOptionPane.showMessageDialog(null, "数据库连接失败");
+			JOptionPane.showMessageDialog(null, "鏁版嵁搴撹繛鎺ュけ璐�");
 		}
 		return con;
 	}
-	// 以下是关闭数据库
+	// 浠ヤ笅鏄叧闂暟鎹簱
 	public void closeDB() {
 		try {
 			pst.close();
 			conn.close();
 		} catch (SQLException e) {
-			JOptionPane.showMessageDialog(null, "数据库关闭失败！");
+			JOptionPane.showMessageDialog(null, "鏁版嵁搴撳叧闂け璐ワ紒");
 		}
 	}
-	// 以下是针对数据库的各种操作
+	// 浠ヤ笅鏄拡瀵规暟鎹簱鐨勫悇绉嶆搷浣�
 	public void actionPerformed(ActionEvent e) {
 		conn=conDB();
 		if (e.getSource() == subMenu3[1] || e.getSource() == toolBarButton[7])
@@ -165,9 +166,9 @@ class Frm_Main implements ActionListener
 		if (e.getSource() == subMenu1[0] || e.getSource() == subMenu1[1]
 				|| e.getSource() == subMenu1[2])
 			JOptionPane.showMessageDialog(null, "");
-		// 查找功能的实现
+		// 鏌ユ壘鍔熻兘鐨勫疄鐜�
 		if (e.getSource() == subMenu2[0] || e.getSource() == toolBarButton[0]) {
-			String idid = JOptionPane.showInputDialog("请输入要查找的学生学号");
+			String idid = JOptionPane.showInputDialog("璇疯緭鍏ヨ鏌ユ壘鐨勫鐢熷鍙�");
 			if (idid.trim() != "") {
 				String strSQL = "select * from student where id =?" ;	
 				try {
@@ -184,7 +185,7 @@ class Frm_Main implements ActionListener
 						count++;
 					}
 					if (count == 0)
-						JOptionPane.showMessageDialog(null, "对不起，没有您要查找的学生！");
+						JOptionPane.showMessageDialog(null, "瀵逛笉璧凤紝娌℃湁鎮ㄨ鏌ユ壘鐨勫鐢燂紒");
 					else {
 						idT.setText(id);
 						nameT.setText(name);
@@ -193,7 +194,7 @@ class Frm_Main implements ActionListener
 						jtbirth.setText(birth);
 					}
 				} catch (Exception ex) {
-					JOptionPane.showMessageDialog(null, "抱歉，程序出现异常！");
+					JOptionPane.showMessageDialog(null, "鎶辨瓑锛岀▼搴忓嚭鐜板紓甯革紒");
 				}
 			}
 		}
@@ -202,7 +203,7 @@ class Frm_Main implements ActionListener
 			System.exit(0);
 		}
 		if (e.getSource() == subMenu2[1] || e.getSource() == toolBarButton[1]) {
-			JOptionPane.showMessageDialog(null, "请输入要添加的学生信息");
+			JOptionPane.showMessageDialog(null, "璇疯緭鍏ヨ娣诲姞鐨勫鐢熶俊鎭�");
 			idT.setEnabled(true);
 			idT.setText("");
 			nameT.setText("");
@@ -216,7 +217,7 @@ class Frm_Main implements ActionListener
 					|| (sexT.getText().trim()).equals("")
 					|| (jtaddr.getText().trim()).equals("")
 					|| (jtbirth.getText().trim()).equals(""))
-				JOptionPane.showMessageDialog(null, "请输入信息再点击提交添加！");
+				JOptionPane.showMessageDialog(null, "璇疯緭鍏ヤ俊鎭啀鐐瑰嚮鎻愪氦娣诲姞锛�");
 			else {
 				id = idT.getText();
 				name = nameT.getText();
@@ -234,10 +235,10 @@ class Frm_Main implements ActionListener
 					pst.executeUpdate();
 				} catch (SQLException e1) {
 					e1.printStackTrace();
-					JOptionPane.showMessageDialog(null, "数据库中已经存在您要添加的学生的学号！");
+					JOptionPane.showMessageDialog(null, "鏁版嵁搴撲腑宸茬粡瀛樺湪鎮ㄨ娣诲姞鐨勫鐢熺殑瀛﹀彿锛�");
 					return;
 				}
-				JOptionPane.showMessageDialog(null, "恭喜您，添加成功了！");
+				JOptionPane.showMessageDialog(null, "鎭枩鎮紝娣诲姞鎴愬姛浜嗭紒");
 			}
 		}
 		if (e.getSource() == subMenu2[4] || e.getSource() == toolBarButton[4]) {
@@ -246,7 +247,7 @@ class Frm_Main implements ActionListener
 					|| (sexT.getText().trim()).equals("")
 					|| (jtaddr.getText().trim()).equals("")
 					|| (jtbirth.getText().trim()).equals("")) {
-				JOptionPane.showMessageDialog(null, "请输入信息再点击修改！");
+				JOptionPane.showMessageDialog(null, "璇疯緭鍏ヤ俊鎭啀鐐瑰嚮淇敼锛�");
 				return;
 			} else {
 				id = idT.getText();
@@ -264,14 +265,14 @@ class Frm_Main implements ActionListener
 					pst.setString(5, id);
 					pst.executeUpdate();
 				} catch (SQLException e1) {
-					JOptionPane.showMessageDialog(null, "数据库中已经存在您要修改的学生记录！");
+					JOptionPane.showMessageDialog(null, "鏁版嵁搴撲腑宸茬粡瀛樺湪鎮ㄨ淇敼鐨勫鐢熻褰曪紒");
 					return;
 				}			
-				JOptionPane.showMessageDialog(null, "恭喜您，修改成功了！");
+				JOptionPane.showMessageDialog(null, "鎭枩鎮紝淇敼鎴愬姛浜嗭紒");
 			}
 		}
 		if (e.getSource() == subMenu2[3] || e.getSource() == toolBarButton[3]) {
-			String idid = JOptionPane.showInputDialog("请输入要修改的学生学号");
+			String idid = JOptionPane.showInputDialog("璇疯緭鍏ヨ淇敼鐨勫鐢熷鍙�");
 			if (idid.trim() != "") {
 				String strSQL = "select * from student where id =?" ;
 				try {
@@ -288,7 +289,7 @@ class Frm_Main implements ActionListener
 						count++;
 					}
 					if (count == 0)
-						JOptionPane.showMessageDialog(null, "对不起，没有您要修改的学生信息！");
+						JOptionPane.showMessageDialog(null, "瀵逛笉璧凤紝娌℃湁鎮ㄨ淇敼鐨勫鐢熶俊鎭紒");
 					else {
 						idT.setText(id);
 						nameT.setText(name);
@@ -298,12 +299,12 @@ class Frm_Main implements ActionListener
 						idT.setEnabled(false);
 					}
 				} catch (Exception ex) {
-					JOptionPane.showMessageDialog(null, "抱歉，程序出现异常！");
+					JOptionPane.showMessageDialog(null, "鎶辨瓑锛岀▼搴忓嚭鐜板紓甯革紒");
 				}
 			}
 		}
 		if (e.getSource() == subMenu2[2] || e.getSource() == toolBarButton[2]) {
-			String idDel = JOptionPane.showInputDialog("请输入要删除的学生学号");
+			String idDel = JOptionPane.showInputDialog("璇疯緭鍏ヨ鍒犻櫎鐨勫鐢熷鍙�");
 			if (idDel.trim() != "") {
 				String strSQL = "select * from student where id =?";
 				try {
@@ -320,7 +321,7 @@ class Frm_Main implements ActionListener
 						++count;
 					}
 					if (count == 0)
-						JOptionPane.showMessageDialog(null, "对不起，没有您要删除的学生信息！");
+						JOptionPane.showMessageDialog(null, "瀵逛笉璧凤紝娌℃湁鎮ㄨ鍒犻櫎鐨勫鐢熶俊鎭紒");
 					else {
 						idT.setText(id);
 						nameT.setText(name);
@@ -330,7 +331,7 @@ class Frm_Main implements ActionListener
 						idT.setEnabled(false);
 					}
 				} catch (Exception ex) {
-					JOptionPane.showMessageDialog(null, "抱歉，程序出现异常！");
+					JOptionPane.showMessageDialog(null, "鎶辨瓑锛岀▼搴忓嚭鐜板紓甯革紒");
 				}
 			}
 		}
@@ -340,7 +341,7 @@ class Frm_Main implements ActionListener
 					|| (sexT.getText().trim()).equals("")
 					|| (jtaddr.getText().trim()).equals("")
 					|| (jtbirth.getText().trim()).equals("")) {
-				JOptionPane.showMessageDialog(null, "请点击删除记录按钮！");
+				JOptionPane.showMessageDialog(null, "璇风偣鍑诲垹闄よ褰曟寜閽紒");
 				return;
 			} else {
 				id = idT.getText();
@@ -350,10 +351,10 @@ class Frm_Main implements ActionListener
 					pst.setString(1, id);
 					pst.executeUpdate();
 				} catch (Exception exx) {
-					JOptionPane.showMessageDialog(null, "出错了！");
+					JOptionPane.showMessageDialog(null, "鍑洪敊浜嗭紒");
 					return;
 				}
-				JOptionPane.showMessageDialog(null, "删除成功！");
+				JOptionPane.showMessageDialog(null, "鍒犻櫎鎴愬姛锛�");
 			}
 		}
 	}
